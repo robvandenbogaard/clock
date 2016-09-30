@@ -147,7 +147,11 @@ taskGrid model =
     label = case model.task of
       Nothing -> "klok"
       Just task ->
-        task.label ++ " " ++ (toString model.secondsLeft)
+        task.label ++ " "
+          ++ (toString (model.secondsLeft // 60))
+          ++ "'"
+          ++ (toString (model.secondsLeft % 60))
+          ++ "\""
   in
     [ rect [ width "300", height "300" ] []
     , line [ x1 "0", y1 "100", x2 "300", y2 "100" ] []

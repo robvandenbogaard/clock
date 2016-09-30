@@ -1,11 +1,13 @@
 import Html exposing (Html)
 import Html.App as Html
+import Html.Attributes as Html
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
 import Svg.Events exposing (..)
 import Time exposing (Time, second)
 import Dict as Dict
 import String as String
+import Json.Encode
 
 main =
   Html.program
@@ -29,14 +31,12 @@ type alias Task =
   { shape : Shape
   , seconds : Int
   , label : String
+  , youtube : String
   }
-
-type alias Timer =
-  ( Int, Int )
 
 type alias Model =
   { time : Time
-  , timer : Maybe Timer
+  , secondsLeft : Int
   , task : Maybe Task
   , tasks : List (Maybe Task)
   }
@@ -44,14 +44,14 @@ type alias Model =
 init : (Model, Cmd Msg)
 init =
   ( { time = 0
-    , timer = Nothing
+    , secondsLeft = 0
     , task = Nothing
     , tasks =
       [ Nothing
       , Nothing
       , Nothing
 
-      , Just { shape = shirt, seconds = 5*60, label = "aankleden" }
+      , Just { shape = shirt, seconds = 1*60, label = "aankleden", youtube = "https://www.youtube.com/embed/geB78_q5cO0?autoplay=1" }
       , Nothing
       , Nothing
 
@@ -76,12 +76,13 @@ update msg model =
   case msg of
     Tick time' ->
       let
-        model' = case model.timer of
+        model' = case model.task of
           Nothing -> { model | time = time' }
-          Just (secondsLeft, secondsTotal) ->
-            case secondsLeft of
-              0 -> { model | time = time', timer = Nothing, task = Nothing }
-              _ -> { model | time = time', timer = Just (secondsLeft - 1, secondsTotal) }
+          Just task ->
+            case model.secondsLeft of
+              0 -> { model | time = time', task = Nothing }
+              secondsLeft ->
+                { model | time = time', secondsLeft = secondsLeft - 1}
       in
         ( model', Cmd.none )
     StartTask idx ->
@@ -89,14 +90,15 @@ update msg model =
         Nothing ->
           let
             model' = case Dict.get idx (Dict.fromList (List.indexedMap (,) model.tasks)) of
-              Nothing -> { model | task = Nothing, timer = Nothing }
-              Just Nothing -> { model | task = Nothing, timer = Nothing }
-              Just (Just task) -> { model | task = Just task, timer = Just (task.seconds, task.seconds) }
+              Nothing -> { model | task = Nothing }
+              Just Nothing -> { model | task = Nothing }
+              Just (Just task) ->
+                { model | task = Just task, secondsLeft = task.seconds }
           in
             ( model', Cmd.none )
         _ -> update EndTask model
     EndTask ->
-      ( { model | task = Nothing, timer = Nothing }, Cmd.none )
+      ( { model | task = Nothing }, Cmd.none )
 
 
 -- SUBSCRIPTIONS
@@ -145,12 +147,7 @@ taskGrid model =
     label = case model.task of
       Nothing -> "klok"
       Just task ->
-        let
-          secondsLeft = case model.timer of
-            Nothing -> 0
-            Just (secondsLeft, _) -> secondsLeft
-        in
-          task.label ++ " " ++ (toString secondsLeft)
+        task.label ++ " " ++ (toString model.secondsLeft)
   in
     [ rect [ width "300", height "300" ] []
     , line [ x1 "0", y1 "100", x2 "300", y2 "100" ] []
@@ -205,8 +202,8 @@ arc x y radius startAngle endAngle =
       ]
       []
 
-taskClock : Timer -> List (Svg Msg)
-taskClock (secondsLeft, secondsTotal) =
+taskClock : Int -> Int -> List (Svg Msg)
+taskClock secondsLeft secondsTotal =
   let
     angle = 360 * ((toFloat secondsLeft) / (toFloat secondsTotal))
   in
@@ -219,15 +216,32 @@ view model =
       Nothing ->
         normalClock model.time
       Just task ->
-        case model.timer of
-          Nothing -> [ rect [] [] ]
-          Just timer -> taskClock timer
+        taskClock model.secondsLeft task.seconds
+    youtube = case model.task of
+      Nothing -> []
+      Just task ->
+        [ foreignObject
+          [ width "1", height "1" ]
+          [ Html.iframe
+            [ Html.width 50
+            , Html.height 50
+            , Html.style [("border", "none")]
+            , Html.src task.youtube
+            , Html.property "frameborder" (Json.Encode.string "0")
+            , Html.property "allowfullscreen" (Json.Encode.string "false")
+            ]
+            []
+          ]
+        ]
   in
     svg [ viewBox "0 0 800 480" ]
-      [ rect [ width "100%", height "100%", fill "black"] []
-      , g [ transform "translate(200,200) scale(190)", strokeWidth "0.01", stroke "white" ]
-        ( [ circle [ r "1" ] [] ]
-        ++ clock
-        )
-      , g [ transform "translate(450,50)", stroke "white" ] (taskGrid model)
-      ]
+      (
+        [ rect [ width "100%", height "100%", fill "black"] []
+        , g [ transform "translate(200,200) scale(190)", strokeWidth "0.01", stroke "white" ]
+          ( [ circle [ r "1" ] [] ]
+          ++ clock
+          )
+        , g [ transform "translate(450,50)", stroke "white" ] (taskGrid model)
+        ]
+        ++ youtube
+      )

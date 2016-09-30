@@ -7863,6 +7863,357 @@ var _elm_lang$html$Html_App$beginnerProgram = function (_p1) {
 		});
 };
 var _elm_lang$html$Html_App$map = _elm_lang$virtual_dom$VirtualDom$map;
+var _elm_lang$html$Html_Attributes$attribute = _elm_lang$virtual_dom$VirtualDom$attribute;
+var _elm_lang$html$Html_Attributes$contextmenu = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$attribute, 'contextmenu', value);
+};
+var _elm_lang$html$Html_Attributes$draggable = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$attribute, 'draggable', value);
+};
+var _elm_lang$html$Html_Attributes$list = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$attribute, 'list', value);
+};
+var _elm_lang$html$Html_Attributes$maxlength = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$attribute,
+		'maxlength',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$datetime = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$attribute, 'datetime', value);
+};
+var _elm_lang$html$Html_Attributes$pubdate = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$attribute, 'pubdate', value);
+};
+var _elm_lang$html$Html_Attributes$colspan = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$attribute,
+		'colspan',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$rowspan = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$attribute,
+		'rowspan',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$property = _elm_lang$virtual_dom$VirtualDom$property;
+var _elm_lang$html$Html_Attributes$stringProperty = F2(
+	function (name, string) {
+		return A2(
+			_elm_lang$html$Html_Attributes$property,
+			name,
+			_elm_lang$core$Json_Encode$string(string));
+	});
+var _elm_lang$html$Html_Attributes$class = function (name) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'className', name);
+};
+var _elm_lang$html$Html_Attributes$id = function (name) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'id', name);
+};
+var _elm_lang$html$Html_Attributes$title = function (name) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'title', name);
+};
+var _elm_lang$html$Html_Attributes$accesskey = function ($char) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'accessKey',
+		_elm_lang$core$String$fromChar($char));
+};
+var _elm_lang$html$Html_Attributes$dir = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'dir', value);
+};
+var _elm_lang$html$Html_Attributes$dropzone = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'dropzone', value);
+};
+var _elm_lang$html$Html_Attributes$itemprop = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'itemprop', value);
+};
+var _elm_lang$html$Html_Attributes$lang = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'lang', value);
+};
+var _elm_lang$html$Html_Attributes$tabindex = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'tabIndex',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$charset = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'charset', value);
+};
+var _elm_lang$html$Html_Attributes$content = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'content', value);
+};
+var _elm_lang$html$Html_Attributes$httpEquiv = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'httpEquiv', value);
+};
+var _elm_lang$html$Html_Attributes$language = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'language', value);
+};
+var _elm_lang$html$Html_Attributes$src = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'src', value);
+};
+var _elm_lang$html$Html_Attributes$height = function (value) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'height',
+		_elm_lang$core$Basics$toString(value));
+};
+var _elm_lang$html$Html_Attributes$width = function (value) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'width',
+		_elm_lang$core$Basics$toString(value));
+};
+var _elm_lang$html$Html_Attributes$alt = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'alt', value);
+};
+var _elm_lang$html$Html_Attributes$preload = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'preload', value);
+};
+var _elm_lang$html$Html_Attributes$poster = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'poster', value);
+};
+var _elm_lang$html$Html_Attributes$kind = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'kind', value);
+};
+var _elm_lang$html$Html_Attributes$srclang = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'srclang', value);
+};
+var _elm_lang$html$Html_Attributes$sandbox = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'sandbox', value);
+};
+var _elm_lang$html$Html_Attributes$srcdoc = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'srcdoc', value);
+};
+var _elm_lang$html$Html_Attributes$type$ = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'type', value);
+};
+var _elm_lang$html$Html_Attributes$value = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'value', value);
+};
+var _elm_lang$html$Html_Attributes$defaultValue = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'defaultValue', value);
+};
+var _elm_lang$html$Html_Attributes$placeholder = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'placeholder', value);
+};
+var _elm_lang$html$Html_Attributes$accept = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'accept', value);
+};
+var _elm_lang$html$Html_Attributes$acceptCharset = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'acceptCharset', value);
+};
+var _elm_lang$html$Html_Attributes$action = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'action', value);
+};
+var _elm_lang$html$Html_Attributes$autocomplete = function (bool) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'autocomplete',
+		bool ? 'on' : 'off');
+};
+var _elm_lang$html$Html_Attributes$autosave = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'autosave', value);
+};
+var _elm_lang$html$Html_Attributes$enctype = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'enctype', value);
+};
+var _elm_lang$html$Html_Attributes$formaction = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'formAction', value);
+};
+var _elm_lang$html$Html_Attributes$minlength = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'minLength',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$method = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'method', value);
+};
+var _elm_lang$html$Html_Attributes$name = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'name', value);
+};
+var _elm_lang$html$Html_Attributes$pattern = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'pattern', value);
+};
+var _elm_lang$html$Html_Attributes$size = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'size',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$for = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'htmlFor', value);
+};
+var _elm_lang$html$Html_Attributes$form = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'form', value);
+};
+var _elm_lang$html$Html_Attributes$max = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'max', value);
+};
+var _elm_lang$html$Html_Attributes$min = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'min', value);
+};
+var _elm_lang$html$Html_Attributes$step = function (n) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'step', n);
+};
+var _elm_lang$html$Html_Attributes$cols = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'cols',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$rows = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'rows',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$wrap = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'wrap', value);
+};
+var _elm_lang$html$Html_Attributes$usemap = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'useMap', value);
+};
+var _elm_lang$html$Html_Attributes$shape = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'shape', value);
+};
+var _elm_lang$html$Html_Attributes$coords = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'coords', value);
+};
+var _elm_lang$html$Html_Attributes$challenge = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'challenge', value);
+};
+var _elm_lang$html$Html_Attributes$keytype = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'keytype', value);
+};
+var _elm_lang$html$Html_Attributes$align = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'align', value);
+};
+var _elm_lang$html$Html_Attributes$cite = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'cite', value);
+};
+var _elm_lang$html$Html_Attributes$href = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'href', value);
+};
+var _elm_lang$html$Html_Attributes$target = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'target', value);
+};
+var _elm_lang$html$Html_Attributes$downloadAs = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'download', value);
+};
+var _elm_lang$html$Html_Attributes$hreflang = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'hreflang', value);
+};
+var _elm_lang$html$Html_Attributes$media = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'media', value);
+};
+var _elm_lang$html$Html_Attributes$ping = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'ping', value);
+};
+var _elm_lang$html$Html_Attributes$rel = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'rel', value);
+};
+var _elm_lang$html$Html_Attributes$start = function (n) {
+	return A2(
+		_elm_lang$html$Html_Attributes$stringProperty,
+		'start',
+		_elm_lang$core$Basics$toString(n));
+};
+var _elm_lang$html$Html_Attributes$headers = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'headers', value);
+};
+var _elm_lang$html$Html_Attributes$scope = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'scope', value);
+};
+var _elm_lang$html$Html_Attributes$manifest = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$stringProperty, 'manifest', value);
+};
+var _elm_lang$html$Html_Attributes$boolProperty = F2(
+	function (name, bool) {
+		return A2(
+			_elm_lang$html$Html_Attributes$property,
+			name,
+			_elm_lang$core$Json_Encode$bool(bool));
+	});
+var _elm_lang$html$Html_Attributes$hidden = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'hidden', bool);
+};
+var _elm_lang$html$Html_Attributes$contenteditable = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'contentEditable', bool);
+};
+var _elm_lang$html$Html_Attributes$spellcheck = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'spellcheck', bool);
+};
+var _elm_lang$html$Html_Attributes$async = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'async', bool);
+};
+var _elm_lang$html$Html_Attributes$defer = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'defer', bool);
+};
+var _elm_lang$html$Html_Attributes$scoped = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'scoped', bool);
+};
+var _elm_lang$html$Html_Attributes$autoplay = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'autoplay', bool);
+};
+var _elm_lang$html$Html_Attributes$controls = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'controls', bool);
+};
+var _elm_lang$html$Html_Attributes$loop = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'loop', bool);
+};
+var _elm_lang$html$Html_Attributes$default = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'default', bool);
+};
+var _elm_lang$html$Html_Attributes$seamless = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'seamless', bool);
+};
+var _elm_lang$html$Html_Attributes$checked = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'checked', bool);
+};
+var _elm_lang$html$Html_Attributes$selected = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'selected', bool);
+};
+var _elm_lang$html$Html_Attributes$autofocus = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'autofocus', bool);
+};
+var _elm_lang$html$Html_Attributes$disabled = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'disabled', bool);
+};
+var _elm_lang$html$Html_Attributes$multiple = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'multiple', bool);
+};
+var _elm_lang$html$Html_Attributes$novalidate = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'noValidate', bool);
+};
+var _elm_lang$html$Html_Attributes$readonly = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'readOnly', bool);
+};
+var _elm_lang$html$Html_Attributes$required = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'required', bool);
+};
+var _elm_lang$html$Html_Attributes$ismap = function (value) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'isMap', value);
+};
+var _elm_lang$html$Html_Attributes$download = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'download', bool);
+};
+var _elm_lang$html$Html_Attributes$reversed = function (bool) {
+	return A2(_elm_lang$html$Html_Attributes$boolProperty, 'reversed', bool);
+};
+var _elm_lang$html$Html_Attributes$classList = function (list) {
+	return _elm_lang$html$Html_Attributes$class(
+		A2(
+			_elm_lang$core$String$join,
+			' ',
+			A2(
+				_elm_lang$core$List$map,
+				_elm_lang$core$Basics$fst,
+				A2(_elm_lang$core$List$filter, _elm_lang$core$Basics$snd, list))));
+};
+var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 var _elm_lang$svg$Svg$text = _elm_lang$virtual_dom$VirtualDom$text;
 var _elm_lang$svg$Svg$svgNamespace = A2(
 	_elm_lang$virtual_dom$VirtualDom$property,
@@ -8290,14 +8641,14 @@ var _robvandenbogaard$clock$Main$arc = F5(
 			_elm_lang$core$Native_List.fromArray(
 				[]));
 	});
-var _robvandenbogaard$clock$Main$taskClock = function (_p4) {
-	var _p5 = _p4;
-	var angle = 360 * (_elm_lang$core$Basics$toFloat(_p5._0) / _elm_lang$core$Basics$toFloat(_p5._1));
-	return _elm_lang$core$Native_List.fromArray(
-		[
-			A5(_robvandenbogaard$clock$Main$arc, 0, 0, 0.7, 0, angle)
-		]);
-};
+var _robvandenbogaard$clock$Main$taskClock = F2(
+	function (secondsLeft, secondsTotal) {
+		var angle = 360 * (_elm_lang$core$Basics$toFloat(secondsLeft) / _elm_lang$core$Basics$toFloat(secondsTotal));
+		return _elm_lang$core$Native_List.fromArray(
+			[
+				A5(_robvandenbogaard$clock$Main$arc, 0, 0, 0.7, 0, angle)
+			]);
+	});
 var _robvandenbogaard$clock$Main$normalClock = function (time) {
 	var angleHours = _elm_lang$core$Basics$toString(
 		30 * A2(
@@ -8365,29 +8716,29 @@ var _robvandenbogaard$clock$Main$normalClock = function (time) {
 				[]))
 		]);
 };
-var _robvandenbogaard$clock$Main$Task = F3(
-	function (a, b, c) {
-		return {shape: a, seconds: b, label: c};
+var _robvandenbogaard$clock$Main$Task = F4(
+	function (a, b, c, d) {
+		return {shape: a, seconds: b, label: c, youtube: d};
 	});
 var _robvandenbogaard$clock$Main$Model = F4(
 	function (a, b, c, d) {
-		return {time: a, timer: b, task: c, tasks: d};
+		return {time: a, secondsLeft: b, task: c, tasks: d};
 	});
 var _robvandenbogaard$clock$Main$Active = {ctor: 'Active'};
 var _robvandenbogaard$clock$Main$Rest = {ctor: 'Rest'};
 var _robvandenbogaard$clock$Main$taskView = F3(
 	function (index, activeTask, maybeTask) {
 		var state = function () {
-			var _p6 = _elm_lang$core$Native_Utils.eq(activeTask, maybeTask);
-			if (_p6 === true) {
+			var _p4 = _elm_lang$core$Native_Utils.eq(activeTask, maybeTask);
+			if (_p4 === true) {
 				return _robvandenbogaard$clock$Main$Active;
 			} else {
 				return _robvandenbogaard$clock$Main$Rest;
 			}
 		}();
 		var shape = function () {
-			var _p7 = maybeTask;
-			if (_p7.ctor === 'Nothing') {
+			var _p5 = maybeTask;
+			if (_p5.ctor === 'Nothing') {
 				return A2(
 					_elm_lang$svg$Svg$rect,
 					_elm_lang$core$Native_List.fromArray(
@@ -8395,32 +8746,24 @@ var _robvandenbogaard$clock$Main$taskView = F3(
 					_elm_lang$core$Native_List.fromArray(
 						[]));
 			} else {
-				return A2(_p7._0.shape, state, index);
+				return A2(_p5._0.shape, state, index);
 			}
 		}();
 		return shape;
 	});
 var _robvandenbogaard$clock$Main$taskGrid = function (model) {
 	var label = function () {
-		var _p8 = model.task;
-		if (_p8.ctor === 'Nothing') {
+		var _p6 = model.task;
+		if (_p6.ctor === 'Nothing') {
 			return 'klok';
 		} else {
-			var secondsLeft = function () {
-				var _p9 = model.timer;
-				if (_p9.ctor === 'Nothing') {
-					return 0;
-				} else {
-					return _p9._0._0;
-				}
-			}();
 			return A2(
 				_elm_lang$core$Basics_ops['++'],
-				_p8._0.label,
+				_p6._0.label,
 				A2(
 					_elm_lang$core$Basics_ops['++'],
 					' ',
-					_elm_lang$core$Basics$toString(secondsLeft)));
+					_elm_lang$core$Basics$toString(model.secondsLeft)));
 		}
 	}();
 	return A2(
@@ -8485,9 +8828,9 @@ var _robvandenbogaard$clock$Main$taskGrid = function (model) {
 			_elm_lang$core$Basics_ops['++'],
 			A2(
 				_elm_lang$core$List$map,
-				function (_p10) {
-					var _p11 = _p10;
-					return A3(_robvandenbogaard$clock$Main$taskView, _p11._0, model.task, _p11._1);
+				function (_p7) {
+					var _p8 = _p7;
+					return A3(_robvandenbogaard$clock$Main$taskView, _p8._0, model.task, _p8._1);
 				},
 				A2(
 					_elm_lang$core$List$indexedMap,
@@ -8514,119 +8857,147 @@ var _robvandenbogaard$clock$Main$taskGrid = function (model) {
 				])));
 };
 var _robvandenbogaard$clock$Main$view = function (model) {
+	var youtube = function () {
+		var _p9 = model.task;
+		if (_p9.ctor === 'Nothing') {
+			return _elm_lang$core$Native_List.fromArray(
+				[]);
+		} else {
+			return _elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$svg$Svg$foreignObject,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$svg$Svg_Attributes$width('1'),
+							_elm_lang$svg$Svg_Attributes$height('1')
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_elm_lang$html$Html$iframe,
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html_Attributes$width(50),
+									_elm_lang$html$Html_Attributes$height(50),
+									_elm_lang$html$Html_Attributes$style(
+									_elm_lang$core$Native_List.fromArray(
+										[
+											{ctor: '_Tuple2', _0: 'border', _1: 'none'}
+										])),
+									_elm_lang$html$Html_Attributes$src(_p9._0.youtube),
+									A2(
+									_elm_lang$html$Html_Attributes$property,
+									'frameborder',
+									_elm_lang$core$Json_Encode$string('0')),
+									A2(
+									_elm_lang$html$Html_Attributes$property,
+									'allowfullscreen',
+									_elm_lang$core$Json_Encode$string('false'))
+								]),
+							_elm_lang$core$Native_List.fromArray(
+								[]))
+						]))
+				]);
+		}
+	}();
 	var clock = function () {
-		var _p12 = model.task;
-		if (_p12.ctor === 'Nothing') {
+		var _p10 = model.task;
+		if (_p10.ctor === 'Nothing') {
 			return _robvandenbogaard$clock$Main$normalClock(model.time);
 		} else {
-			var _p13 = model.timer;
-			if (_p13.ctor === 'Nothing') {
-				return _elm_lang$core$Native_List.fromArray(
-					[
-						A2(
-						_elm_lang$svg$Svg$rect,
-						_elm_lang$core$Native_List.fromArray(
-							[]),
-						_elm_lang$core$Native_List.fromArray(
-							[]))
-					]);
-			} else {
-				return _robvandenbogaard$clock$Main$taskClock(_p13._0);
-			}
+			return A2(_robvandenbogaard$clock$Main$taskClock, model.secondsLeft, _p10._0.seconds);
 		}
 	}();
 	return A2(
 		_elm_lang$svg$Svg$svg,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$svg$Svg_Attributes$viewBox('0 0 800 480'),
-				_elm_lang$svg$Svg_Attributes$height('100%')
+				_elm_lang$svg$Svg_Attributes$viewBox('0 0 800 480')
 			]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				A2(
-				_elm_lang$svg$Svg$rect,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$svg$Svg_Attributes$width('100%'),
-						_elm_lang$svg$Svg_Attributes$height('100%'),
-						_elm_lang$svg$Svg_Attributes$fill('black')
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[])),
-				A2(
-				_elm_lang$svg$Svg$g,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$svg$Svg_Attributes$transform('translate(200,200) scale(190)'),
-						_elm_lang$svg$Svg_Attributes$strokeWidth('0.01'),
-						_elm_lang$svg$Svg_Attributes$stroke('white')
-					]),
-				A2(
-					_elm_lang$core$Basics_ops['++'],
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$svg$Svg$rect,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							A2(
-							_elm_lang$svg$Svg$circle,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_elm_lang$svg$Svg_Attributes$r('1')
-								]),
-							_elm_lang$core$Native_List.fromArray(
-								[]))
+							_elm_lang$svg$Svg_Attributes$width('100%'),
+							_elm_lang$svg$Svg_Attributes$height('100%'),
+							_elm_lang$svg$Svg_Attributes$fill('black')
 						]),
-					clock)),
-				A2(
-				_elm_lang$svg$Svg$g,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$svg$Svg_Attributes$transform('translate(450,50)'),
-						_elm_lang$svg$Svg_Attributes$stroke('white')
-					]),
-				_robvandenbogaard$clock$Main$taskGrid(model))
-			]));
+					_elm_lang$core$Native_List.fromArray(
+						[])),
+					A2(
+					_elm_lang$svg$Svg$g,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$svg$Svg_Attributes$transform('translate(200,200) scale(190)'),
+							_elm_lang$svg$Svg_Attributes$strokeWidth('0.01'),
+							_elm_lang$svg$Svg_Attributes$stroke('white')
+						]),
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_elm_lang$core$Native_List.fromArray(
+							[
+								A2(
+								_elm_lang$svg$Svg$circle,
+								_elm_lang$core$Native_List.fromArray(
+									[
+										_elm_lang$svg$Svg_Attributes$r('1')
+									]),
+								_elm_lang$core$Native_List.fromArray(
+									[]))
+							]),
+						clock)),
+					A2(
+					_elm_lang$svg$Svg$g,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$svg$Svg_Attributes$transform('translate(450,50)'),
+							_elm_lang$svg$Svg_Attributes$stroke('white')
+						]),
+					_robvandenbogaard$clock$Main$taskGrid(model))
+				]),
+			youtube));
 };
 var _robvandenbogaard$clock$Main$EndTask = {ctor: 'EndTask'};
 var _robvandenbogaard$clock$Main$update = F2(
 	function (msg, model) {
 		update:
 		while (true) {
-			var _p14 = msg;
-			switch (_p14.ctor) {
+			var _p11 = msg;
+			switch (_p11.ctor) {
 				case 'Tick':
-					var _p18 = _p14._0;
+					var _p14 = _p11._0;
 					var model$ = function () {
-						var _p15 = model.timer;
-						if (_p15.ctor === 'Nothing') {
+						var _p12 = model.task;
+						if (_p12.ctor === 'Nothing') {
 							return _elm_lang$core$Native_Utils.update(
 								model,
-								{time: _p18});
+								{time: _p14});
 						} else {
-							var _p17 = _p15._0._0;
-							var _p16 = _p17;
-							if (_p16 === 0) {
+							var _p13 = model.secondsLeft;
+							if (_p13 === 0) {
 								return _elm_lang$core$Native_Utils.update(
 									model,
-									{time: _p18, timer: _elm_lang$core$Maybe$Nothing, task: _elm_lang$core$Maybe$Nothing});
+									{time: _p14, task: _elm_lang$core$Maybe$Nothing});
 							} else {
 								return _elm_lang$core$Native_Utils.update(
 									model,
-									{
-										time: _p18,
-										timer: _elm_lang$core$Maybe$Just(
-											{ctor: '_Tuple2', _0: _p17 - 1, _1: _p15._0._1})
-									});
+									{time: _p14, secondsLeft: _p13 - 1});
 							}
 						}
 					}();
 					return {ctor: '_Tuple2', _0: model$, _1: _elm_lang$core$Platform_Cmd$none};
 				case 'StartTask':
-					var _p19 = model.task;
-					if (_p19.ctor === 'Nothing') {
+					var _p15 = model.task;
+					if (_p15.ctor === 'Nothing') {
 						var model$ = function () {
-							var _p20 = A2(
+							var _p16 = A2(
 								_elm_lang$core$Dict$get,
-								_p14._0,
+								_p11._0,
 								_elm_lang$core$Dict$fromList(
 									A2(
 										_elm_lang$core$List$indexedMap,
@@ -8635,33 +9006,32 @@ var _robvandenbogaard$clock$Main$update = F2(
 												return {ctor: '_Tuple2', _0: v0, _1: v1};
 											}),
 										model.tasks)));
-							if (_p20.ctor === 'Nothing') {
+							if (_p16.ctor === 'Nothing') {
 								return _elm_lang$core$Native_Utils.update(
 									model,
-									{task: _elm_lang$core$Maybe$Nothing, timer: _elm_lang$core$Maybe$Nothing});
+									{task: _elm_lang$core$Maybe$Nothing});
 							} else {
-								if (_p20._0.ctor === 'Nothing') {
+								if (_p16._0.ctor === 'Nothing') {
 									return _elm_lang$core$Native_Utils.update(
 										model,
-										{task: _elm_lang$core$Maybe$Nothing, timer: _elm_lang$core$Maybe$Nothing});
+										{task: _elm_lang$core$Maybe$Nothing});
 								} else {
-									var _p21 = _p20._0._0;
+									var _p17 = _p16._0._0;
 									return _elm_lang$core$Native_Utils.update(
 										model,
 										{
-											task: _elm_lang$core$Maybe$Just(_p21),
-											timer: _elm_lang$core$Maybe$Just(
-												{ctor: '_Tuple2', _0: _p21.seconds, _1: _p21.seconds})
+											task: _elm_lang$core$Maybe$Just(_p17),
+											secondsLeft: _p17.seconds
 										});
 								}
 							}
 						}();
 						return {ctor: '_Tuple2', _0: model$, _1: _elm_lang$core$Platform_Cmd$none};
 					} else {
-						var _v14 = _robvandenbogaard$clock$Main$EndTask,
-							_v15 = model;
-						msg = _v14;
-						model = _v15;
+						var _v12 = _robvandenbogaard$clock$Main$EndTask,
+							_v13 = model;
+						msg = _v12;
+						model = _v13;
 						continue update;
 					}
 				default:
@@ -8669,7 +9039,7 @@ var _robvandenbogaard$clock$Main$update = F2(
 						ctor: '_Tuple2',
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{task: _elm_lang$core$Maybe$Nothing, timer: _elm_lang$core$Maybe$Nothing}),
+							{task: _elm_lang$core$Maybe$Nothing}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};
 			}
@@ -8680,16 +9050,16 @@ var _robvandenbogaard$clock$Main$StartTask = function (a) {
 };
 var _robvandenbogaard$clock$Main$shirt = F2(
 	function (state, idx) {
-		var _p22 = function () {
-			var _p23 = state;
-			if (_p23.ctor === 'Rest') {
+		var _p18 = function () {
+			var _p19 = state;
+			if (_p19.ctor === 'Rest') {
 				return {ctor: '_Tuple2', _0: 'green', _1: 'lightgreen'};
 			} else {
 				return {ctor: '_Tuple2', _0: 'red', _1: 'darkred'};
 			}
 		}();
-		var color = _p22._0;
-		var strokeColor = _p22._1;
+		var color = _p18._0;
+		var strokeColor = _p18._1;
 		var y = 20 + (100 * ((idx / 3) | 0));
 		var x = 10 + (100 * A2(_elm_lang$core$Basics_ops['%'], idx, 3));
 		return A2(
@@ -8731,7 +9101,7 @@ var _robvandenbogaard$clock$Main$init = {
 	ctor: '_Tuple2',
 	_0: {
 		time: 0,
-		timer: _elm_lang$core$Maybe$Nothing,
+		secondsLeft: 0,
 		task: _elm_lang$core$Maybe$Nothing,
 		tasks: _elm_lang$core$Native_List.fromArray(
 			[
@@ -8739,7 +9109,7 @@ var _robvandenbogaard$clock$Main$init = {
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Just(
-				{shape: _robvandenbogaard$clock$Main$shirt, seconds: 5 * 60, label: 'aankleden'}),
+				{shape: _robvandenbogaard$clock$Main$shirt, seconds: 1 * 60, label: 'aankleden', youtube: 'https://www.youtube.com/embed/geB78_q5cO0?autoplay=1'}),
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Nothing,

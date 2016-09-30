@@ -223,7 +223,7 @@ view model =
           Nothing -> [ rect [] [] ]
           Just timer -> taskClock timer
   in
-    svg [ viewBox "0 0 800 480", height "100%"]
+    svg [ viewBox "0 0 800 480" ]
       [ rect [ width "100%", height "100%", fill "black"] []
       , g [ transform "translate(200,200) scale(190)", strokeWidth "0.01", stroke "white" ]
         ( [ circle [ r "1" ] [] ]

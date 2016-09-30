@@ -51,7 +51,7 @@ init =
       , Nothing
       , Nothing
 
-      , Just { shape = shirt, seconds = 1*60, label = "aankleden", music = "shirt.ogg" }
+      , Just { shape = shirt, seconds = 5*60, label = "aankleden", music = "shirt.ogg" }
       , Nothing
       , Nothing
 
@@ -225,6 +225,7 @@ view model =
           [ Html.audio
             [ Html.src task.music
             , Html.autoplay True
+            , Html.loop True
             ]
             []
           ]

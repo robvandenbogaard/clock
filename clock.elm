@@ -31,7 +31,7 @@ type alias Task =
   { shape : Shape
   , seconds : Int
   , label : String
-  , youtube : String
+  , music : String
   }
 
 type alias Model =
@@ -51,7 +51,7 @@ init =
       , Nothing
       , Nothing
 
-      , Just { shape = shirt, seconds = 1*60, label = "aankleden", youtube = "https://www.youtube.com/embed/geB78_q5cO0?autoplay=1" }
+      , Just { shape = shirt, seconds = 1*60, label = "aankleden", music = "shirt.ogg" }
       , Nothing
       , Nothing
 
@@ -217,18 +217,14 @@ view model =
         normalClock model.time
       Just task ->
         taskClock model.secondsLeft task.seconds
-    youtube = case model.task of
+    music = case model.task of
       Nothing -> []
       Just task ->
         [ foreignObject
           [ width "1", height "1" ]
-          [ Html.iframe
-            [ Html.width 50
-            , Html.height 50
-            , Html.style [("border", "none")]
-            , Html.src task.youtube
-            , Html.property "frameborder" (Json.Encode.string "0")
-            , Html.property "allowfullscreen" (Json.Encode.string "false")
+          [ Html.audio
+            [ Html.src task.music
+            , Html.autoplay True
             ]
             []
           ]
@@ -243,5 +239,5 @@ view model =
           )
         , g [ transform "translate(450,50)", stroke "white" ] (taskGrid model)
         ]
-        ++ youtube
+        ++ music
       )

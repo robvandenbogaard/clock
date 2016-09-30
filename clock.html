@@ -8718,7 +8718,7 @@ var _robvandenbogaard$clock$Main$normalClock = function (time) {
 };
 var _robvandenbogaard$clock$Main$Task = F4(
 	function (a, b, c, d) {
-		return {shape: a, seconds: b, label: c, youtube: d};
+		return {shape: a, seconds: b, label: c, music: d};
 	});
 var _robvandenbogaard$clock$Main$Model = F4(
 	function (a, b, c, d) {
@@ -8857,7 +8857,7 @@ var _robvandenbogaard$clock$Main$taskGrid = function (model) {
 				])));
 };
 var _robvandenbogaard$clock$Main$view = function (model) {
-	var youtube = function () {
+	var music = function () {
 		var _p9 = model.task;
 		if (_p9.ctor === 'Nothing') {
 			return _elm_lang$core$Native_List.fromArray(
@@ -8875,25 +8875,11 @@ var _robvandenbogaard$clock$Main$view = function (model) {
 					_elm_lang$core$Native_List.fromArray(
 						[
 							A2(
-							_elm_lang$html$Html$iframe,
+							_elm_lang$html$Html$audio,
 							_elm_lang$core$Native_List.fromArray(
 								[
-									_elm_lang$html$Html_Attributes$width(50),
-									_elm_lang$html$Html_Attributes$height(50),
-									_elm_lang$html$Html_Attributes$style(
-									_elm_lang$core$Native_List.fromArray(
-										[
-											{ctor: '_Tuple2', _0: 'border', _1: 'none'}
-										])),
-									_elm_lang$html$Html_Attributes$src(_p9._0.youtube),
-									A2(
-									_elm_lang$html$Html_Attributes$property,
-									'frameborder',
-									_elm_lang$core$Json_Encode$string('0')),
-									A2(
-									_elm_lang$html$Html_Attributes$property,
-									'allowfullscreen',
-									_elm_lang$core$Json_Encode$string('false'))
+									_elm_lang$html$Html_Attributes$src(_p9._0.music),
+									_elm_lang$html$Html_Attributes$autoplay(true)
 								]),
 							_elm_lang$core$Native_List.fromArray(
 								[]))
@@ -8960,7 +8946,7 @@ var _robvandenbogaard$clock$Main$view = function (model) {
 						]),
 					_robvandenbogaard$clock$Main$taskGrid(model))
 				]),
-			youtube));
+			music));
 };
 var _robvandenbogaard$clock$Main$EndTask = {ctor: 'EndTask'};
 var _robvandenbogaard$clock$Main$update = F2(
@@ -9109,7 +9095,7 @@ var _robvandenbogaard$clock$Main$init = {
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Just(
-				{shape: _robvandenbogaard$clock$Main$shirt, seconds: 1 * 60, label: 'aankleden', youtube: 'https://www.youtube.com/embed/geB78_q5cO0?autoplay=1'}),
+				{shape: _robvandenbogaard$clock$Main$shirt, seconds: 1 * 60, label: 'aankleden', music: 'shirt.ogg'}),
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Nothing,

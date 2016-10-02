@@ -165,6 +165,13 @@ taskGrid model =
     ++ [ text' [ transform "translate(0,340)", fill "white", stroke "none", fontSize "200%" ] [ text label ]
     ]
 
+numberOnClock : Int -> Svg Msg
+numberOnClock number =
+  let
+    angle = number * 30 |> toString
+  in
+    text' [ transform ("rotate(" ++ angle ++ ")"), x "0", y "-0.8", fontSize "0.2px", textAnchor "middle" ] [ text <| toString number ]
+
 normalClock : Time -> List (Svg Msg)
 normalClock time =
   let
@@ -179,6 +186,7 @@ normalClock time =
     , line [ transform ("rotate(" ++ angleMinutes ++ ")"), x2 "0", y2 "-0.8", strokeWidth "0.02"] []
     , line [ transform ("rotate(" ++ angleHours ++ ")"), x2 "0", y2 "-0.5", strokeWidth "0.03"] []
     ]
+    ++ ([12,1,2,3,4,5,6,7,8,9,10,11] |> List.map numberOnClock)
 
 polarToCartesian centerX centerY radius angleInDegrees =
   let

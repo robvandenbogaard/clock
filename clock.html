@@ -8649,28 +8649,6 @@ var _robvandenbogaard$clock$Main$taskClock = F2(
 				A5(_robvandenbogaard$clock$Main$arc, 0, 0, 0.7, 0, angle)
 			]);
 	});
-var _robvandenbogaard$clock$Main$numberOnClock = function (number) {
-	var angle = _elm_lang$core$Basics$toString(number * 30);
-	return A2(
-		_elm_lang$svg$Svg$text$,
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$svg$Svg_Attributes$transform(
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					'rotate(',
-					A2(_elm_lang$core$Basics_ops['++'], angle, ')'))),
-				_elm_lang$svg$Svg_Attributes$x('0'),
-				_elm_lang$svg$Svg_Attributes$y('-0.8'),
-				_elm_lang$svg$Svg_Attributes$fontSize('0.2px'),
-				_elm_lang$svg$Svg_Attributes$textAnchor('middle')
-			]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$svg$Svg$text(
-				_elm_lang$core$Basics$toString(number))
-			]));
-};
 var _robvandenbogaard$clock$Main$normalClock = function (time) {
 	var angleHours = _elm_lang$core$Basics$toString(
 		30 * A2(
@@ -8690,60 +8668,53 @@ var _robvandenbogaard$clock$Main$normalClock = function (time) {
 			_elm_lang$core$Basics$floor(
 				_elm_lang$core$Time$inSeconds(time)),
 			60));
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_elm_lang$core$Native_List.fromArray(
-			[
-				A2(
-				_elm_lang$svg$Svg$line,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$svg$Svg_Attributes$transform(
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							'rotate(',
-							A2(_elm_lang$core$Basics_ops['++'], angleSeconds, ')'))),
-						_elm_lang$svg$Svg_Attributes$x2('0'),
-						_elm_lang$svg$Svg_Attributes$y2('-0.9')
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[])),
-				A2(
-				_elm_lang$svg$Svg$line,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$svg$Svg_Attributes$transform(
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							'rotate(',
-							A2(_elm_lang$core$Basics_ops['++'], angleMinutes, ')'))),
-						_elm_lang$svg$Svg_Attributes$x2('0'),
-						_elm_lang$svg$Svg_Attributes$y2('-0.8'),
-						_elm_lang$svg$Svg_Attributes$strokeWidth('0.02')
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[])),
-				A2(
-				_elm_lang$svg$Svg$line,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$svg$Svg_Attributes$transform(
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							'rotate(',
-							A2(_elm_lang$core$Basics_ops['++'], angleHours, ')'))),
-						_elm_lang$svg$Svg_Attributes$x2('0'),
-						_elm_lang$svg$Svg_Attributes$y2('-0.5'),
-						_elm_lang$svg$Svg_Attributes$strokeWidth('0.03')
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[]))
-			]),
-		A2(
-			_elm_lang$core$List$map,
-			_robvandenbogaard$clock$Main$numberOnClock,
+	return _elm_lang$core$Native_List.fromArray(
+		[
+			A2(
+			_elm_lang$svg$Svg$line,
 			_elm_lang$core$Native_List.fromArray(
-				[12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])));
+				[
+					_elm_lang$svg$Svg_Attributes$transform(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'rotate(',
+						A2(_elm_lang$core$Basics_ops['++'], angleSeconds, ')'))),
+					_elm_lang$svg$Svg_Attributes$x2('0'),
+					_elm_lang$svg$Svg_Attributes$y2('-0.9')
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[])),
+			A2(
+			_elm_lang$svg$Svg$line,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$svg$Svg_Attributes$transform(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'rotate(',
+						A2(_elm_lang$core$Basics_ops['++'], angleMinutes, ')'))),
+					_elm_lang$svg$Svg_Attributes$x2('0'),
+					_elm_lang$svg$Svg_Attributes$y2('-0.8'),
+					_elm_lang$svg$Svg_Attributes$strokeWidth('0.02')
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[])),
+			A2(
+			_elm_lang$svg$Svg$line,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$svg$Svg_Attributes$transform(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'rotate(',
+						A2(_elm_lang$core$Basics_ops['++'], angleHours, ')'))),
+					_elm_lang$svg$Svg_Attributes$x2('0'),
+					_elm_lang$svg$Svg_Attributes$y2('-0.5'),
+					_elm_lang$svg$Svg_Attributes$strokeWidth('0.03')
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[]))
+		]);
 };
 var _robvandenbogaard$clock$Main$Task = F4(
 	function (a, b, c, d) {

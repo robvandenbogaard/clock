@@ -8720,16 +8720,16 @@ var _robvandenbogaard$clock$Main$Task = F4(
 	function (a, b, c, d) {
 		return {shape: a, seconds: b, label: c, music: d};
 	});
-var _robvandenbogaard$clock$Main$Model = F4(
-	function (a, b, c, d) {
-		return {time: a, secondsLeft: b, task: c, tasks: d};
+var _robvandenbogaard$clock$Main$Model = F5(
+	function (a, b, c, d, e) {
+		return {time: a, secondsLeft: b, taskIndex: c, task: d, tasks: e};
 	});
 var _robvandenbogaard$clock$Main$Active = {ctor: 'Active'};
 var _robvandenbogaard$clock$Main$Rest = {ctor: 'Rest'};
 var _robvandenbogaard$clock$Main$taskView = F3(
-	function (index, activeTask, maybeTask) {
+	function (index, activeIndex, maybeTask) {
 		var state = function () {
-			var _p4 = _elm_lang$core$Native_Utils.eq(activeTask, maybeTask);
+			var _p4 = _elm_lang$core$Native_Utils.eq(activeIndex, index);
 			if (_p4 === true) {
 				return _robvandenbogaard$clock$Main$Active;
 			} else {
@@ -8840,7 +8840,7 @@ var _robvandenbogaard$clock$Main$taskGrid = function (model) {
 				_elm_lang$core$List$map,
 				function (_p7) {
 					var _p8 = _p7;
-					return A3(_robvandenbogaard$clock$Main$taskView, _p8._0, model.task, _p8._1);
+					return A3(_robvandenbogaard$clock$Main$taskView, _p8._0, model.taskIndex, _p8._1);
 				},
 				A2(
 					_elm_lang$core$List$indexedMap,
@@ -8888,7 +8888,8 @@ var _robvandenbogaard$clock$Main$view = function (model) {
 							_elm_lang$html$Html$audio,
 							_elm_lang$core$Native_List.fromArray(
 								[
-									_elm_lang$html$Html_Attributes$src(_p9._0.music),
+									_elm_lang$html$Html_Attributes$src(
+									A2(_elm_lang$core$Basics_ops['++'], 'music/', _p9._0.music)),
 									_elm_lang$html$Html_Attributes$autoplay(true),
 									_elm_lang$html$Html_Attributes$loop(true)
 								]),
@@ -8979,7 +8980,7 @@ var _robvandenbogaard$clock$Main$update = F2(
 							if (_p13 === 0) {
 								return _elm_lang$core$Native_Utils.update(
 									model,
-									{time: _p14, task: _elm_lang$core$Maybe$Nothing});
+									{time: _p14, task: _elm_lang$core$Maybe$Nothing, taskIndex: -1});
 							} else {
 								return _elm_lang$core$Native_Utils.update(
 									model,
@@ -8989,12 +8990,13 @@ var _robvandenbogaard$clock$Main$update = F2(
 					}();
 					return {ctor: '_Tuple2', _0: model$, _1: _elm_lang$core$Platform_Cmd$none};
 				case 'StartTask':
+					var _p18 = _p11._0;
 					var _p15 = model.task;
 					if (_p15.ctor === 'Nothing') {
 						var model$ = function () {
 							var _p16 = A2(
 								_elm_lang$core$Dict$get,
-								_p11._0,
+								_p18,
 								_elm_lang$core$Dict$fromList(
 									A2(
 										_elm_lang$core$List$indexedMap,
@@ -9006,18 +9008,19 @@ var _robvandenbogaard$clock$Main$update = F2(
 							if (_p16.ctor === 'Nothing') {
 								return _elm_lang$core$Native_Utils.update(
 									model,
-									{task: _elm_lang$core$Maybe$Nothing});
+									{task: _elm_lang$core$Maybe$Nothing, taskIndex: -1});
 							} else {
 								if (_p16._0.ctor === 'Nothing') {
 									return _elm_lang$core$Native_Utils.update(
 										model,
-										{task: _elm_lang$core$Maybe$Nothing});
+										{task: _elm_lang$core$Maybe$Nothing, taskIndex: -1});
 								} else {
 									var _p17 = _p16._0._0;
 									return _elm_lang$core$Native_Utils.update(
 										model,
 										{
 											task: _elm_lang$core$Maybe$Just(_p17),
+											taskIndex: _p18,
 											secondsLeft: _p17.seconds
 										});
 								}
@@ -9036,7 +9039,7 @@ var _robvandenbogaard$clock$Main$update = F2(
 						ctor: '_Tuple2',
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{task: _elm_lang$core$Maybe$Nothing}),
+							{task: _elm_lang$core$Maybe$Nothing, taskIndex: -1}),
 						_1: _elm_lang$core$Platform_Cmd$none
 					};
 			}
@@ -9045,18 +9048,70 @@ var _robvandenbogaard$clock$Main$update = F2(
 var _robvandenbogaard$clock$Main$StartTask = function (a) {
 	return {ctor: 'StartTask', _0: a};
 };
-var _robvandenbogaard$clock$Main$shirt = F2(
+var _robvandenbogaard$clock$Main$dummy = F2(
 	function (state, idx) {
-		var _p18 = function () {
-			var _p19 = state;
-			if (_p19.ctor === 'Rest') {
+		var _p19 = function () {
+			var _p20 = state;
+			if (_p20.ctor === 'Rest') {
 				return {ctor: '_Tuple2', _0: 'green', _1: 'lightgreen'};
 			} else {
 				return {ctor: '_Tuple2', _0: 'red', _1: 'darkred'};
 			}
 		}();
-		var color = _p18._0;
-		var strokeColor = _p18._1;
+		var color = _p19._0;
+		var strokeColor = _p19._1;
+		var py = 100 * ((idx / 3) | 0);
+		var px = 100 * A2(_elm_lang$core$Basics_ops['%'], idx, 3);
+		return A2(
+			_elm_lang$svg$Svg$g,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$svg$Svg_Attributes$transform(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'translate(',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(px),
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								',',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(py),
+									')')))))
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$svg$Svg$rect,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$svg$Svg_Attributes$stroke(strokeColor),
+							_elm_lang$svg$Svg_Attributes$fill(color),
+							_elm_lang$svg$Svg_Attributes$x('20'),
+							_elm_lang$svg$Svg_Attributes$y('20'),
+							_elm_lang$svg$Svg_Attributes$width('60'),
+							_elm_lang$svg$Svg_Attributes$height('60'),
+							_elm_lang$svg$Svg_Events$onClick(
+							_robvandenbogaard$clock$Main$StartTask(idx))
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[]))
+				]));
+	});
+var _robvandenbogaard$clock$Main$shirt = F2(
+	function (state, idx) {
+		var _p21 = function () {
+			var _p22 = state;
+			if (_p22.ctor === 'Rest') {
+				return {ctor: '_Tuple2', _0: 'green', _1: 'lightgreen'};
+			} else {
+				return {ctor: '_Tuple2', _0: 'red', _1: 'darkred'};
+			}
+		}();
+		var color = _p21._0;
+		var strokeColor = _p21._1;
 		var y = 20 + (100 * ((idx / 3) | 0));
 		var x = 10 + (100 * A2(_elm_lang$core$Basics_ops['%'], idx, 3));
 		return A2(
@@ -9099,17 +9154,24 @@ var _robvandenbogaard$clock$Main$init = {
 	_0: {
 		time: 0,
 		secondsLeft: 0,
+		taskIndex: -1,
 		task: _elm_lang$core$Maybe$Nothing,
 		tasks: _elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$core$Maybe$Nothing,
-				_elm_lang$core$Maybe$Nothing,
-				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Just(
-				{shape: _robvandenbogaard$clock$Main$shirt, seconds: 5 * 60, label: 'aankleden', music: 'shirt.ogg'}),
-				_elm_lang$core$Maybe$Nothing,
-				_elm_lang$core$Maybe$Nothing,
-				_elm_lang$core$Maybe$Nothing,
+				{shape: _robvandenbogaard$clock$Main$dummy, seconds: 5 * 60, label: 'wekken', music: 'wekken.ogg'}),
+				_elm_lang$core$Maybe$Just(
+				{shape: _robvandenbogaard$clock$Main$dummy, seconds: 5 * 60, label: 'opstaan', music: 'opstaan.mp3'}),
+				_elm_lang$core$Maybe$Just(
+				{shape: _robvandenbogaard$clock$Main$dummy, seconds: 10 * 60, label: 'wc', music: 'wc.ogg'}),
+				_elm_lang$core$Maybe$Just(
+				{shape: _robvandenbogaard$clock$Main$dummy, seconds: 5 * 60, label: 'wassen', music: 'wassen.mp3'}),
+				_elm_lang$core$Maybe$Just(
+				{shape: _robvandenbogaard$clock$Main$shirt, seconds: 5 * 60, label: 'aankleden', music: 'aankleden.ogg'}),
+				_elm_lang$core$Maybe$Just(
+				{shape: _robvandenbogaard$clock$Main$dummy, seconds: 4 * 60, label: 'tandenpoetsen', music: 'tandenpoetsen.mp3'}),
+				_elm_lang$core$Maybe$Just(
+				{shape: _robvandenbogaard$clock$Main$dummy, seconds: 4 * 60, label: 'tandenpoetsen', music: 'tandenpoetsen2.mp3'}),
 				_elm_lang$core$Maybe$Nothing,
 				_elm_lang$core$Maybe$Nothing
 			])

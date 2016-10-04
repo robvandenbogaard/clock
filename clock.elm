@@ -37,6 +37,7 @@ type alias Task =
 type alias Model =
   { time : Time
   , secondsLeft : Int
+  , taskIndex : Int
   , task : Maybe Task
   , tasks : List (Maybe Task)
   }
@@ -45,17 +46,18 @@ init : (Model, Cmd Msg)
 init =
   ( { time = 0
     , secondsLeft = 0
+    , taskIndex = -1
     , task = Nothing
     , tasks =
-      [ Nothing
-      , Nothing
-      , Nothing
+      [ Just { shape = dummy, seconds = 5*60, label = "wekken", music = "wekken.ogg" }
+      , Just { shape = dummy, seconds = 5*60, label = "opstaan", music = "opstaan.mp3" }
+      , Just { shape = dummy, seconds = 10*60, label = "wc", music = "wc.ogg" }
 
-      , Just { shape = shirt, seconds = 5*60, label = "aankleden", music = "shirt.ogg" }
-      , Nothing
-      , Nothing
+      , Just { shape = dummy, seconds = 5*60, label = "wassen", music = "wassen.mp3" }
+      , Just { shape = shirt, seconds = 5*60, label = "aankleden", music = "aankleden.ogg" }
+      , Just { shape = dummy, seconds = 4*60, label = "tandenpoetsen", music = "tandenpoetsen.mp3" }
 
-      , Nothing
+      , Just { shape = dummy, seconds = 4*60, label = "tandenpoetsen", music = "tandenpoetsen2.mp3" }
       , Nothing
       , Nothing
       ]
@@ -80,7 +82,7 @@ update msg model =
           Nothing -> { model | time = time' }
           Just task ->
             case model.secondsLeft of
-              0 -> { model | time = time', task = Nothing }
+              0 -> { model | time = time', task = Nothing, taskIndex = -1 }
               secondsLeft ->
                 { model | time = time', secondsLeft = secondsLeft - 1}
       in
@@ -90,15 +92,15 @@ update msg model =
         Nothing ->
           let
             model' = case Dict.get idx (Dict.fromList (List.indexedMap (,) model.tasks)) of
-              Nothing -> { model | task = Nothing }
-              Just Nothing -> { model | task = Nothing }
+              Nothing -> { model | task = Nothing, taskIndex = -1 }
+              Just Nothing -> { model | task = Nothing, taskIndex = -1 }
               Just (Just task) ->
-                { model | task = Just task, secondsLeft = task.seconds }
+                { model | task = Just task, taskIndex = idx, secondsLeft = task.seconds }
           in
             ( model', Cmd.none )
         _ -> update EndTask model
     EndTask ->
-      ( { model | task = Nothing }, Cmd.none )
+      ( { model | task = Nothing, taskIndex = -1 }, Cmd.none )
 
 
 -- SUBSCRIPTIONS
@@ -109,6 +111,27 @@ subscriptions model =
 
 
 -- VIEW
+
+dummy : Shape
+dummy state idx =
+  let
+    px = 100 * (idx % 3)
+    py = 100 * (idx // 3)
+    (color, strokeColor)  = case state of
+      Rest -> ("green", "lightgreen")
+      Active -> ("red", "darkred")
+  in
+    g [ transform ("translate(" ++ (toString px) ++ "," ++ (toString py) ++ ")") ]
+    [ rect
+      [ stroke strokeColor
+      , fill color
+      , x "20"
+      , y "20"
+      , width "60"
+      , height "60"
+      , onClick (StartTask idx)
+      ] []
+    ]
 
 shirt : Shape
 shirt state idx =
@@ -128,10 +151,10 @@ shirt state idx =
       ] []
     ]
 
-taskView : Int -> Maybe Task -> Maybe Task -> Svg Msg
-taskView index activeTask maybeTask =
+taskView : Int -> Int -> Maybe Task -> Svg Msg
+taskView index activeIndex maybeTask =
   let
-    state = case activeTask == maybeTask of
+    state = case activeIndex == index of
       True -> Active
       False -> Rest
     shape = case maybeTask of
@@ -160,7 +183,7 @@ taskGrid model =
     , line [ x1 "200", y1 "0", x2 "200", y2 "300" ] []
     ]
     ++ List.map
-      (\(idx, task) -> taskView idx model.task task)
+      (\(idx, task) -> taskView idx model.taskIndex task)
       (List.indexedMap (,) model.tasks)
     ++ [ text' [ transform "translate(0,340)", fill "white", stroke "none", fontSize "200%" ] [ text label ]
     ]
@@ -227,7 +250,7 @@ view model =
         [ foreignObject
           [ width "1", height "1" ]
           [ Html.audio
-            [ Html.src task.music
+            [ Html.src <| "music/" ++ task.music
             , Html.autoplay True
             , Html.loop True
             ]
